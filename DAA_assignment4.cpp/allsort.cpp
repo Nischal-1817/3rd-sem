@@ -52,10 +52,6 @@ class sorting
                     }
                 }
                 swap(i,min_index);
-                //nischal 
-                //he is one of the most 
-                // most wonderful person
-                //oh nice
             }
         }
         void insertionSort()
