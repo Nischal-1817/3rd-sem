@@ -1,6 +1,8 @@
 #include<iostream>
 #include<vector>
 using namespace std;
+//here we are dividing the array into three parts and sorting them recursively the worst case time complexity would be 
+//O(n*logn)
 class sorting//sorting class
 {
     private://taking a vector for taking input
