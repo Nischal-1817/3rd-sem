@@ -93,6 +93,9 @@ int main()//Main function
     int m,n;
     cout<<"Enter the two numbers you want to multiply:";
     cin>>m>>n;//taking input
+    if(m*n>=pow(2,32))
     binaryMultiply obj(m,n);
+    else 
+    cout<<"Overflow condition"<<endl;
     return 0;
 }//End of main function
