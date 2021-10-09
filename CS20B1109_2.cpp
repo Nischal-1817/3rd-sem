@@ -31,7 +31,7 @@ class sorting//sorting class
             {
                 int left,right;//the two pivots
                 left=division(low,high,&right);
-                quickSort(low,left-1);
+                quickSort(low,left-1);//calling recursive functions for 3 parts
                 quickSort(left+1,right-1);
                 quickSort(right+1,high);
             }

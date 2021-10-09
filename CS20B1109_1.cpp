@@ -42,7 +42,7 @@ class binaryMultiply//class for binary multiplication
             for(int i=1;i<n;i++)//here we are adding the number 'm' by itself until 'n' times  
             {
                 for(int j=31;j>=0;j--)//adding binary numbers
-                {
+                {//designing like carry look ahead adder circuit
                     p=arr1[j]^arr3[j];
                     g=arr1[j]&arr3[j];
                     carry2=g+(p&carry1);
@@ -93,9 +93,6 @@ int main()//Main function
     int m,n;
     cout<<"Enter the two numbers you want to multiply:";
     cin>>m>>n;//taking input
-    if(m*n>=pow(2,32))
     binaryMultiply obj(m,n);
-    else 
-    cout<<"Overflow condition"<<endl;
     return 0;
 }//End of main function
