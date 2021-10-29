@@ -46,7 +46,7 @@ class greedyKnap
             {
                 for(int j=i;j<profitArray.size();j++)
                 {
-                    if(weightArray[i]<weightArray[j])
+                    if(weightArray[i]>weightArray[j])
                     {
                         int temp=profitArray[i]; profitArray[i]=profitArray[j]; profitArray[j]=temp;
                         temp=weightArray[i]; weightArray[i]=weightArray[j]; weightArray[j]=temp;
