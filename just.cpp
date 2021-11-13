@@ -7,7 +7,59 @@ class graph
         map<int,int>level;
         map<int,map<int,bool>>edges;
         vector<int>adj[20];
+        int countVertices=0;
     public:
+        void dfs(int s,int x)
+        {
+            vis[s]=true;
+            cout<<s<<" ";
+            countVertices++;
+            for(auto v:adj[s])
+            {
+                if(!vis[v]&&v!=x)
+                {
+                    dfs(v,x);
+                }
+            }
+        }
+        void init(int s,int x,int y,int n)
+        {
+            /* for(auto v:adj[s])
+            {
+                cout<<"DFS:"; dfs(v,x); cout<<endl;
+                break;
+            }
+            if(countVertices==n-1)
+            {
+                cout<<s<<" is not an articulation point"<<endl;
+            }
+            else 
+            {
+                cout<<s<<" is an articulation point"<<endl;
+            } */
+            dfs2(s,x,y);
+            if(countVertices==n)
+            {
+                cout<<" The edge is not an bridge"<<endl;
+            }
+            else 
+            {
+                cout<<"The edge is a bridge"<<endl;
+            }
+        }
+        void dfs2(int s,int x,int y)
+        {
+            vis[s]=true;
+            cout<<s<<" ";
+            countVertices++;
+            for(auto v:adj[s])
+            {
+                if(!vis[v]&&(s!=x||v!=y))
+                {
+                    dfs2(v,x,y);
+                }
+            }
+        }
         void bfs(int s)
         {
             int count=0;
@@ -86,9 +138,13 @@ int main()
         cin>>u>>v;
         g.addEdge(u,v);
     }
-    cout<<"Enter the source vertex:";
+   /*  cout<<"Enter the source vertex:";
     cin>>u;
     g.bfs(u);
-    g.printLevel();
+    g.printLevel(); */
+    //g.init(u,u,n); for articulation point
+    cout<<"Enter the starting and ending point of the bridge:";
+    cin>>u>>v;
+    g.init(u,u,v,n);
     return 0;
 }
