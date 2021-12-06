@@ -1,0 +1,110 @@
+//CS20B1109
+//Nischal Pradyoth
+//program to implement circular queue
+
+#include<iostream>
+#include<stdbool.h>
+#define size 5//defining size of circular queue
+using namespace std;
+//class defintition for circular queue ADT
+class queue 
+{
+  private:
+        int arr[size];
+        int front;
+        int rear;
+  public:
+        queue(){ front=rear=-1; }
+        void enqueue(int);
+        int deque();
+        int peek()//Function to return the front element
+        {
+            if(isempty())
+            { return -1; }
+            else
+            { return arr[front]; }
+        }
+        void display()//Function to display the queue
+        {
+            if(isempty())
+            {
+                cout<<"queue is empty"<<endl;
+            }
+            else
+            {
+            cout<<"The jobID's in the printQueue are:";
+            int i=front;
+            while(i!=rear)
+            {
+                cout<<arr[i]<<" ";
+                i=(i+1)%size;
+            }
+            cout<<arr[i];
+            }
+        }
+        bool isfull()//Function to tell whether the circular queue isfull or not
+        {
+            if(front==(rear+1)%size)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        bool isempty()//Function to tell whether the circular queue isempty or not
+        {
+            if(front==-1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+};
+//Function to insert an element at rear into circular queue
+void queue::enqueue(int element)
+{
+    if(isfull())
+    {
+        cout<<"queue is full"<<endl;
+    }
+    else
+    {
+    if(rear==-1)
+    {
+        front=rear=0;
+        arr[rear]=element;
+    }
+    else
+    {
+        rear=(rear+1)%size;
+        arr[rear]=element;
+    }
+    }
+}
+//Function to remove an element at front from circular queue
+int queue :: deque()
+{
+    if(isempty())
+    {
+        return -1;
+    }
+    else
+    {
+         
+        int temp=arr[front];
+        if(front==rear)
+        {
+            front=rear=-1;
+        }
+        else
+        {
+        front=(front+1)%size;
+        }
+        return temp;
+    }
+}
